@@ -1,24 +1,146 @@
+/* Glow Container - covers screen, sits behind elements, clickable-through */
+.glow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    /* Behind content, but on top of the body background */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Base style for the desaturated red glow circles */
+.red-glow {
+    position: absolute;
+    border-radius: 50%;
+    /* Desaturated red, slightly transparent */
+    background-color: rgba(211, 53, 53, 0.5);
+    /* Slight blur so it's a soft-edged circle, not a huge cloud of smoke */
+    filter: blur(2px);
+    pointer-events: none;
+    opacity: 0;
+    /* Starts invisible */
+}
+
+/* Red Glow 1 - Top Left area */
+.red-glow-1 {
+    width: 140px;
+    height: 140px;
+    top: 25%;
+    left: 15%;
+    animation: pop-fade-1 12s infinite ease-in-out;
+}
+
+/* Red Glow 2 - Bottom Right area */
+.red-glow-2 {
+    width: 100px;
+    height: 100px;
+    bottom: 25%;
+    right: 18%;
+    animation: pop-fade-2 16s infinite ease-in-out 3s;
+    /* Delay of 3s to stagger it */
+}
+
+/* Red Glow 3 - Mid Right area */
+.red-glow-3 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    left: 75%;
+    animation: pop-fade-3 10s infinite ease-in-out 1.5s;
+    /* Delay of 1.5s */
+}
+
+/* Animation keyframes: fade in/out and scale up/down */
+@keyframes pop-fade-1 {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translate(0, 0);
+    }
+
+    30%,
+    70% {
+        opacity: 0.55;
+        /* Fades in and becomes visible */
+        transform: scale(1) translate(15px, -15px);
+        /* Drifts slightly */
+    }
+}
+
+@keyframes pop-fade-2 {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translate(0, 0);
+    }
+
+    40%,
+    80% {
+        opacity: 0.45;
+        transform: scale(1.1) translate(-10px, 15px);
+    }
+}
+
+@keyframes pop-fade-3 {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translate(0, 0);
+    }
+
+    25%,
+    75% {
+        opacity: 0.5;
+        transform: scale(0.95) translate(-15px, -10px);
+    }
+}
+
+
+
+
 body {
-    /* Grey Background Gradient */
-    background: linear-gradient(168deg, rgba(217, 217, 217, 1) 0%, rgba(105, 105, 105, 1) 100%);
+    /* 1. SVG is first (top layer), 2. Gradient is second (bottom layer) */
+    background-image:
+        url("https://raw.githubusercontent.com/kelv-debug/Floodify/a66f3e5eb5a5fe483bb66cae4be714693f790cef/openclipart-vectors-map-117174.svg"),
+        linear-gradient(168deg, rgba(219, 219, 219, 1) 0%, rgba(84, 84, 84, 1) 100%);
+
+    /* Set 80% size for the SVG map, and cover for the gradient background */
+    background-size: 80%, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
 
     /* Remove scroll bar */
     overflow: hidden;
 }
+
 
 .top-panel-container {
     display: flex;
     justify-content: top;
     flex-direction: column;
     align-items: top;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Safari support */
     height: 20vh;
 
+    /* Smoothly fades the bottom 30% of the container's blur and content */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
+
 
 .logo {
     /* FLOODIFY Logo Text */
+    margin-top: 8px;
     margin-left: 20px;
-    color: rgb(104, 104, 104);
+    color: rgb(94, 94, 94);
     font-family: fantasy;
     font-size: 50px;
     display: flex;
@@ -38,7 +160,7 @@ body {
 
 #F {
     /* F in FLOODIFY */
-    color: rgb(139, 139, 139);
+    color: rgb(128, 128, 128);
     font-family: fantasy;
 }
 
@@ -46,17 +168,17 @@ body {
     /* line under FLOODIFY */
     border: none;
     height: 4px;
-    background-color: #797979;
+    background-color: rgb(78, 78, 78);
     width: 100%;
     margin: 15px auto;
 }
 
 .LANDING-PAGE-container {
-    /* Glassmorphism In Effect */
+    /* Contains the Center */
     justify-content: center;
     align-items: center;
     display: flex;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(226, 226, 226, 0.705);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -66,9 +188,7 @@ body {
     flex-direction: column;
     height: 73vh;
     width: 50%;
-    font-family: fantasy;
     font-size: larger;
-    font-weight: bold;
     gap: 20px;
     margin: 0 auto;
     margin-bottom: 62px;
@@ -77,15 +197,20 @@ body {
 }
 
 .p3 {
-    font-size: 30px;
+    font-size: 35px;
     text-shadow: 0px 0px 0px;
     letter-spacing: 0.5px;
+    font-family: fantasy;
+    color: #424242;
 }
 
 p4 {
     font-size: 20px;
-    text-shadow: -1px -1px -1px;
-    letter-spacing: 0.5px;
+    font-family: monospace;
+    text-shadow: 1px -1px -1px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .landing-page-button {
@@ -144,7 +269,7 @@ p4 {
     width: center;
     justify-content: center;
     align-items: center;
-    margin-top: -25px;
+    margin-top: -17px;
 
     /* Glassmorphism Effect */
     background: rgba(255, 255, 255, 0.12);
@@ -155,4 +280,29 @@ p4 {
     padding: 20px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
 
+}
+
+.Main-Page-container {
+    display: none;
+    /* Hidden by default */
+    /* Other display properties */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* Glassmorphism Effect */
+    background: rgba(226, 226, 226, 0.705);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 35px;
+    padding: 8px 380px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    height: 73vh;
+    width: 50%;
+    font-size: larger;
+    gap: 20px;
+    margin: 0 auto;
+    margin-bottom: 62px;
+    margin-top: -48px;
 }
