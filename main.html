@@ -7,10 +7,18 @@
     <title>Floodify</title>
     <link rel="icon" href="https://github.com/kelv-debug/Floodify/blob/main/imgs/logo1-removebg-preview.png?raw=true">
     <link rel="stylesheet" href="main.css">
-
 </head>
 
+
 <body>
+    <!-- Faint Red Glow Circles -->
+    <div class="glow-container">
+        <div class="red-glow red-glow-1"></div>
+        <div class="red-glow red-glow-2"></div>
+        <div class="red-glow red-glow-3"></div>
+    </div>
+
+    <!-- FLOODIFY Logo and Top Panel with Line -->
     <div class="top-panel-container">
         <div class="logo">
             <p1 id="F">F</p1>
@@ -19,22 +27,43 @@
         <hr class="top-line">
     </div>
 
+
+    <!-- FLOODIFY Landing Page with Logo, Slogan, Description, and Button -->
     <div class="LANDING-PAGE-container">
         <img src="https://github.com/kelv-debug/Floodify/blob/main/imgs/logo1-removebg-preview.png?raw=true"
             width="240px" height="240px">
 
         <p3 class="p3">A Simple Interactive Flood Visualizer</p3>
-        <p4>Floodify is an interactive flood visualization platform that lets you explore flood-prone areas with ease. 
-            Designed for convenience, it provides an intuitive way to navigate maps and access important flood information anytime.</p4>
+        <p4>Floodify is an interactive flood visualization platform that lets you explore flood-prone areas with
+            ease.
+            Designed for convenience, it provides an intuitive way to navigate maps and access important flood
+            information anytime.</p4>
 
-        <button class="landing-page-button" type="button" onclick="exploreMap">Explore Map</button>
+        <button class="landing-page-button" type="button" onclick="exploreMap()">Explore Map</button>
+    </div>
+
+    <!-- Map Area -->
+
+    <div class="Main-Page-container">
+        <p5>Main Pageeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p5>
     </div>
 
     <div class="footer">
         &copy; Developed by Grade 12-1 ICT Sardonyx from Immaculate Concepcion Polytechnic Meycauayan
         | School Year 2026-2027 | Powered BY Project NOAH Hazard Data
     </div>
-
 </body>
+
+
+<script>
+    function exploreMap(mode) {
+        const landingPageContainer = document.querySelector('.LANDING-PAGE-container');
+        landingPageContainer.style.display = 'none'; // Hide the landing page container
+
+        const mainPageContainer = document.querySelector('.Main-Page-container');
+        mainPageContainer.style.display = 'flex'; // Displays the element directly
+    }
+
+</script>
 
 </html>
