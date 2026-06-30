@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flood Hazard Map</title>
+
+  <!-- Leaflet (2D) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- MapLibre GL (3D) -->
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="map-3d" style="display:none;"></div>
+
+  <!-- 3D toggle button -->
+  <div id="view-toggle">
+    <button id="btn-2d" class="toggle-btn active">2D</button>
+    <button id="btn-3d" class="toggle-btn">3D</button>
+  </div>
+
+  <!-- Layer toggle panel -->
+  <div id="layer-toggle">
+    <label for="flood-toggle">
+      <input type="checkbox" id="flood-toggle" checked />
+      Flood Hazard Layer
+    </label>
+  </div>
+
+  <!-- Legend -->
+  <div id="legend"></div>
+
+  <!-- Pitch slider (3D only) -->
+  <div id="pitch-control">
+    <label for="pitch-slider">Tilt</label>
+    <input type="range" id="pitch-slider" min="0" max="85" value="45" />
+  </div>
+
+  <script src="config.js"></script>
+  <script src="viewer.js"></script>
+</body>
+
+</html>
