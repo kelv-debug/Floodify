@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floodify - Interactive Flood Hazard Visualizer</title>
+
+    <link rel="icon" type="image/png" href="img/floodifyIcon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="landingStyle.css">
+    <link rel="stylesheet" href="mapStyle2.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- MapLibre CSS -->
+    <link href="https://unpkg.com/maplibre-gl@5.7.0/dist/maplibre-gl.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- LANDING PAGE                              -->
+    <!-- ========================================= -->
+    <div id="Landing-Page">
+
+        <!-- Animated Background -->
+        <div class="background">
+            <div class="gradient-layer"></div>
+            <div class="ambient-glow glow-left"></div>
+            <div class="ambient-glow glow-right"></div>
+            <div class="fog fog-one"></div>
+            <div class="fog fog-two"></div>
+            <div class="rain-layer"></div>
+            <div class="rain"></div>
+            <div class="noise-layer"></div>
+            <div class="light light-one"></div>
+            <div class="light light-two"></div>
+            <img src="img/phOutline.svg" class="philippines-outline" alt="Philippines Map Outline">
+        </div>
+
+        <!-- Navigation -->
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="img/floodifyLogo.png" alt="Floodify Logo">
+                </a>
+
+                <button class="menu-toggle" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="#" id="guideBtn">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span>Guide</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="aboutBtn">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>About Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="contactBtn">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="menu-overlay"></div>
+
+        <!-- Hero Section -->
+        <main>
+            <section class="hero">
+                <div class="particles">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+
+                <div class="hero-content">
+                    <h1>FLOODIFY</h1>
+                    <h2>Interactive Flood Visualization Platform</h2>
+                    <p class="hero-tagline">Don't Wing It. Floodify It.</p>
+                    <button class="explore-btn" id="explore-map">Explore Map</button>
+                </div>
+
+                <div class="scroll-indicator">
+                    <span></span>
+                    <p>Scroll Down</p>
+                </div>
+            </section>
+
+
+            <!-- Floodify's Aim -->
+            <section class="aim">
+
+                <div class="aim-content">
+
+                    <span class="aim-label">Floodify's Aim</span>
+
+                    <h2>
+                        Making Flood Hazard Information
+                        Easier to See and Understand
+                    </h2>
+
+                    <p class="aim-description">
+                        Floodify aims to transform complex flood hazard information
+                        into an interactive visual experience, helping users explore
+                        areas that may be exposed to significant flooding.
+                    </p>
+
+                    <div class="flood-scenario">
+
+                        <span class="scenario-label">The 100-Year Flood Scenario</span>
+
+                        <h3>
+                            A Standardized View of Significant Flood Hazard
+                        </h3>
+
+                        <p>
+                            Floodify uses the 100-year flood scenario as its primary
+                            reference for flood hazard visualization. This scenario
+                            represents a flood event with a 1% annual probability of
+                            being equaled or exceeded, providing a consistent way
+                            to visualize areas that may be vulnerable to major flooding.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="section-heading">
+                    <span>Platform Features</span>
+                    <h2>Explore Meycauayan's Flood Hazards with Confidence</h2>
+                    <p>
+                        Floodify combines interactive mapping, historical flood data,
+                        and intuitive visualization into one seamless experience.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <!-- Feature Card 1 -->
+                    <article class="feature-card reveal"
+                        onclick="document.querySelector('.hero-content').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <h3>Interactive Map</h3>
+                        <p>
+                            Navigate flood-prone areas across the Philippines
+                            with smooth interaction and province selection.
+                        </p>
+                    </article>
+
+                    <!-- Feature Card 2 -->
+                    <article class="feature-card featured reveal">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                        </div>
+                        <h3>Historical Data</h3>
+                        <p>
+                            Explore historical flood hazard information
+                            powered by Project NOAH for better awareness
+                            and informed decision-making.
+                        </p>
+                    </article>
+
+                    <!-- Feature Card 3 -->
+                    <article class="feature-card reveal">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h3>Flood Visualization</h3>
+                        <p>
+                            Explore flooded area focused on Meycauayan, Bulacan,
+                            while also allowing users to view flooded areas
+                            across the Philippines.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Technology Divider -->
+            <section class="tech-divider">
+                <div class="topo-lines"></div>
+                <div class="tech-glass">
+                    <span class="tech-label">Built with</span>
+                    <h2>Project NOAH Data</h2>
+                    <div class="divider-dot"></div>
+                    <span class="tech-label">Interactive Mapping Engine</span>
+                    <h3>MapLibre GL JS</h3>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="img/floodifyIcon.png" alt="Floodify Icon">
+                    <h2>FLOODIFY</h2>
+                    <p>Interactive Flood Hazard Visualization Platform</p>
+                </div>
+
+                <div class="school-card">
+                    <span>Floodify is a project of</span>
+                    <div class="school-box">
+                        <img src="img/schoolLogo.png" alt="ICP School Logo">
+                        <h3>Immaculate Conception Polytechnic</h3>
+                        <p>Meycauayan City</p>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <h3>Navigation</h3>
+                        <a href="#" onclick="document.getElementById('guideBtn').click(); return false;">Guide</a>
+                        <a href="#" onclick="document.querySelector('.explore-btn').click(); return false;">Explore
+                            Map</a>
+                    </div>
+
+                    <div>
+                        <h3>Technology</h3>
+                        <span>Project NOAH</span>
+                        <span>MapLibre GL JS</span>
+                        <span>HTML • CSS • JavaScript</span>
+                    </div>
+
+                    <div>
+                        <h3>Contact</h3>
+                        <a href="mailto:floodify697@gmail.com">floodify697@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © Developed by Grade 12-1 ICT from Immaculate Conception Polytechnic Meycauayan SY 2026-2027
+            </div>
+        </footer>
+
+        <!-- Information Modal Overlay -->
+        <div class="info-overlay" id="infoOverlay">
+            <div class="info-modal">
+                <button class="modal-close" id="closeModal" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal-content" id="modalContent">
+                    <!-- Dynamic modal content loaded via JS -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- MAP DASHBOARD PAGE                        -->
+    <!-- ========================================= -->
+    <div id="Map-Page" class="hidden">
+        <section id="dashboard">
+
+            <div id="sidebar-overlay"></div>
+
+            <button id="mobile-menu-btn" aria-label="Toggle map menu">
+                <i id="mobile-menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Sidebar -->
+            <aside id="sidebar">
+
+                <!-- Header -->
+                <div class="sidebar-header">
+                    <button id="return-button" class="return-btn" title="Return to Landing Page">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                    <div class="sidebar-logo">
+                        <img src="img/floodifyIcon.png" alt="Floodify Logo">
+                        <div class="logo-text">
+                            <h2><span class="logo-f">F</span>LOODIFY</h2>
+                            <span>Interactive Flood Visualizer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meycauayan Card (PRIMARY FOCUS) -->
+                <div class="sidebar-card sidebar-card-primary">
+                    <h3>
+                        <i class="fa-solid fa-map-pin"></i>
+                        Meycauayan
+                    </h3>
+                    <label for="barangay-select" class="field-label">Select Barangay</label>
+                    <select id="barangay-select">
+                        <option value="">Select Barangay</option>
+                        <option value="Bagbaguin">Bagbaguin</option>
+                        <option value="Bahay Pare">Bahay Pare</option>
+                        <option value="Bancal">Bancal</option>
+                        <option value="Banga">Banga</option>
+                        <option value="Bayugo">Bayugo</option>
+                        <option value="Caingin">Caingin</option>
+                        <option value="Calvario">Calvario</option>
+                        <option value="Camalig">Camalig</option>
+                        <option value="Hulo">Hulo</option>
+                        <option value="Iba">Iba</option>
+                        <option value="Langka">Langka</option>
+                        <option value="Lawa">Lawa</option>
+                        <option value="Libtong">Libtong</option>
+                        <option value="Liputan">Liputan</option>
+                        <option value="Longos">Longos</option>
+                        <option value="Malhacan">Malhacan</option>
+                        <option value="Pajo">Pajo</option>
+                        <option value="Pandayan">Pandayan</option>
+                        <option value="Pantok">Pantok</option>
+                        <option value="Perez">Perez</option>
+                        <option value="Poblacion">Poblacion</option>
+                        <option value="Saint Francis">Saint Francis</option>
+                        <option value="Saluysoy">Saluysoy</option>
+                        <option value="Tugatog">Tugatog</option>
+                        <option value="Ubihan">Ubihan</option>
+                        <option value="Zamora">Zamora</option>
+                    </select>
+
+                    <div class="view-buttons">
+                        <button id="btn-2d" class="active">
+                            <i class="fa-solid fa-map"></i>
+                            <span>2D</span>
+                        </button>
+                        <button id="btn-3d">
+                            <i class="fa-solid fa-cube"></i>
+                            <span>3D</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Explore Other Areas (SECONDARY / COLLAPSIBLE) -->
+                <div class="sidebar-card sidebar-card-collapsible">
+                    <button id="explore-toggle" class="collapse-toggle" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-earth-asia"></i>
+                            Explore Other Areas
+                        </span>
+                        <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                    </button>
+
+                    <div id="explore-panel" class="collapse-panel">
+                        <div class="explore-panel-inner">
+                            <label for="search-input" class="field-label">Search Location</label>
+                            <div class="search-wrapper">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="search-input" placeholder="Search anywhere in the Philippines..."
+                                    autocomplete="off">
+                            </div>
+                            <div id="search-results"></div>
+
+                            <label for="province-select" class="field-label" style="margin-top:14px;">Province</label>
+                            <select id="province-select">
+                                <option value="Abra">Abra</option>
+                                <option value="Agusan del Norte">Agusan del Norte</option>
+                                <option value="Agusan del Sur">Agusan del Sur</option>
+                                <option value="Aklan">Aklan</option>
+                                <option value="Albay">Albay</option>
+                                <option value="Antique">Antique</option>
+                                <option value="Apayao">Apayao</option>
+                                <option value="Aurora">Aurora</option>
+                                <option value="Basilan">Basilan</option>
+                                <option value="Bataan">Bataan</option>
+                                <option value="Batanes">Batanes</option>
+                                <option value="Batangas">Batangas</option>
+                                <option value="Benguet">Benguet</option>
+                                <option value="Biliran">Biliran</option>
+                                <option value="Bohol">Bohol</option>
+                                <option value="Bukidnon">Bukidnon</option>
+                                <option value="Bulacan" selected>Bulacan & Metro Manila</option>
+                                <option value="Cagayan">Cagayan</option>
+                                <option value="Camarines Norte">Camarines Norte</option>
+                                <option value="Camarines Sur">Camarines Sur</option>
+                                <option value="Camiguin">Camiguin</option>
+                                <option value="Capiz">Capiz</option>
+                                <option value="Catanduanes">Catanduanes</option>
+                                <option value="Cavite">Cavite</option>
+                                <option value="Cebu">Cebu</option>
+                                <option value="Compostella Valley">Compostella Valley</option>
+                                <option value="Cotabato">Cotabato</option>
+                                <option value="Davao del Norte">Davao del Norte</option>
+                                <option value="Davao del Sur">Davao del Sur</option>
+                                <option value="Davao Occidental">Davao Occidental</option>
+                                <option value="Davao Oriental">Davao Oriental</option>
+                                <option value="Dinagat Islands">Dinagat Islands</option>
+                                <option value="Eastern Samar">Eastern Samar</option>
+                                <option value="Ifugao">Ifugao</option>
+                                <option value="Ilocos Norte">Ilocos Norte</option>
+                                <option value="Ilocos Sur">Ilocos Sur</option>
+                                <option value="Iloilo">Iloilo</option>
+                                <option value="Isabela">Isabela</option>
+                                <option value="Kalinga">Kalinga</option>
+                                <option value="La Union">La Union</option>
+                                <option value="Laguna">Laguna</option>
+                                <option value="Lanao del Norte">Lanao del Norte</option>
+                                <option value="Lanao del Sur">Lanao del Sur</option>
+                                <option value="Leyte">Leyte</option>
+                                <option value="Maguindanao">Maguindanao</option>
+                                <option value="Marinduque">Marinduque</option>
+                                <option value="Masbate">Masbate</option>
+                                <option value="Metro Manila">Metro Manila</option>
+                                <option value="Misamis Occidental">Misamis Occidental</option>
+                                <option value="Misamis Oriental">Misamis Oriental</option>
+                                <option value="Mountain Province">Mountain Province</option>
+                                <option value="Negros Occidental">Negros Occidental</option>
+                                <option value="Negros Oriental">Negros Oriental</option>
+                                <option value="Northern Samar">Northern Samar</option>
+                                <option value="Nueva Ecija">Nueva Ecija</option>
+                                <option value="Nueva Vizcaya">Nueva Vizcaya</option>
+                                <option value="Occidental Mindoro">Occidental Mindoro</option>
+                                <option value="Oriental Mindoro">Oriental Mindoro</option>
+                                <option value="Palawan">Palawan</option>
+                                <option value="Pampanga">Pampanga</option>
+                                <option value="Pangasinan">Pangasinan</option>
+                                <option value="Quezon">Quezon</option>
+                                <option value="Quirino">Quirino</option>
+                                <option value="Rizal">Rizal</option>
+                                <option value="Romblon">Romblon</option>
+                                <option value="Samar">Samar</option>
+                                <option value="Sarangani">Sarangani</option>
+                                <option value="Sorsogon">Sorsogon</option>
+                                <option value="South Cotabato">South Cotabato</option>
+                                <option value="Southern Leyte">Southern Leyte</option>
+                                <option value="Sultan Kudarat">Sultan Kudarat</option>
+                                <option value="Surigao del Norte">Surigao del Norte</option>
+                                <option value="Surigao del Sur">Surigao del Sur</option>
+                                <option value="Tarlac">Tarlac</option>
+                                <option value="Zambales">Zambales</option>
+                                <option value="Zamboanga del Norte">Zamboanga del Norte</option>
+                                <option value="Zamboanga del Sur">Zamboanga del Sur</option>
+                                <option value="Zamboanga Sibugay">Zamboanga Sibugay</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Current Location
+                    </h3>
+                    <div class="location-status safe">
+                        <span class="status-dot"></span>
+                        Waiting for GPS...
+                    </div>
+                    <div class="location-details">
+                        <strong id="location-name">Bulacan</strong>
+                    </div>
+                </div>
+
+                <!-- Info Card -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i class="fa-solid fa-chart-simple"></i>
+                        Province Information
+                    </h3>
+                    <div class="info-row">
+                        <span>Province</span>
+                        <strong id="current-province">Bulacan</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Flood Hazard</span>
+                        <strong id="current-layer">100-Year Flood</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Source</span>
+                        <strong>Project NOAH</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>FLOODIFY IS NOT A REAL-TIME VISUALIZER</span>
+                        <strong></strong>
+                    </div>
+                </div>
+
+                <!-- Safety Reminders Card -->
+                <div class="sidebar-card">
+                    <h3>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Safety Reminders
+                    </h3>
+                    <ul class="tips-list">
+                        <li>
+                            <i class="fa-solid fa-suitcase-medical"></i>
+                            <span>Prepare an emergency go bag.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-battery-full"></i>
+                            <span>Charge phones and power banks.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-road-barrier"></i>
+                            <span>Avoid crossing flooded roads.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <span>Follow PAGASA and LGU advisories.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+            <!-- Mobile Branding Header -->
+            <div id="mobile-branding">
+                <img src="img/floodifyIcon.png" alt="Floodify Logo">
+                <div class="branding-text">
+                    <h2><span>F</span>LOODIFY</h2>
+                    <p>Interactive Flood Visualizer</p>
+                </div>
+            </div>
+
+            <!-- Map View Container -->
+            <main id="map-container">
+                <div id="map"></div>
+
+                <button id="btn-home" class="map-control-btn" title="Return to Meycauayan">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Return to Meycauayan</span>
+                </button>
+
+
+                <button id="flood-info-toggle" class="map-control-btn flood-info-toggle"
+                    title=" Meycauayan Flood information">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+
+                <div id="flood-info-panel">
+                    <button id="flood-info-close" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <h3><i class="fa-solid fa-circle-info"></i> Why Meycauayan floods</h3>
+                    <p>
+                        Meycauayan sits downstream of the Angat, Ipo, and Bustos dams. When heavy rain forces these dams
+                        to release water, it flows down the Angat River system toward Bulacan's low-lying towns. At the
+                        same time, Meycauayan's waterways drain into Manila Bay — so during high tide, that outgoing
+                        flow slows or reverses, letting floodwater linger longer in the city.
+                    </p>
+                    <h3><i class="fa-solid fa-clock-rotate-left"></i> Most flood-prone barangays</h3>
+                    <ul class="barangay-list">
+                        <li>Bancal</li>
+                        <li>Bayugo</li>
+                        <li>Hulo</li>
+                        <li>Lawa</li>
+                        <li>Longos</li>
+                        <li>Poblacion</li>
+                        <li>Saluysoy</li>
+                        <li>Saint Francis (Gasak)</li>
+                        <li>Zamora</li>
+                        <li>Perez</li>
+                    </ul>
+                    <p class="flood-info-source">Source: Meycauayan City CDP 2023–2028</p>
+                </div>
+
+
+                <!-- Map Legend -->
+                <div id="legend">
+                    <h3>
+                        <i class="fa-solid fa-water"></i>
+                        Flood Hazard
+                    </h3>
+                    <div class="legend-item">
+                        <span class="legend-color low"></span>
+                        Low Risk
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color medium"></span>
+                        Moderate Risk
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color high"></span>
+                        High Risk
+                    </div>
+                    <div class="legend-footer">
+                        100-Year Flood Hazard<br>
+                        Data Source: Project NOAH
+                    </div>
+                </div>
+            </main>
+
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/maplibre-gl@5.7.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/pmtiles@3/dist/pmtiles.js"></script>
+    <script src="landingScript.js"></script>
+    <script src="data/barangayAnchors.js"></script>
+    <script src="mapScript.js"></script>
+
+</body>
+
+</html>
