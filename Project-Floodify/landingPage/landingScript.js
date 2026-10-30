@@ -230,7 +230,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <hr>
                 <h3>Email Address</h3>
                 <p>
-                    <a href="mailto:floodify697@gmail.com" class="modal-email">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=floodify697@gmail.com"
+                        class="modal-email"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         <i class="fa-solid fa-envelope"></i>
                         floodify697@gmail.com
                     </a>

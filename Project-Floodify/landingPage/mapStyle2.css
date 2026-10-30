@@ -952,6 +952,27 @@ LAPTOP LEGEND (1280x720, 1366x768, etc.)
 
 }
 
+
+/* iPad portrait — sidebar hidden, more room to work with than a phone */
+@media (min-width: 600px) and (max-width: 768px) {
+    #flood-info-panel {
+        width: 360px;
+        right: 20px;
+        bottom: 90px;
+        max-height: 60vh;
+    }
+}
+
+/* iPad landscape — sidebar visible, desktop-style layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #flood-info-panel {
+        width: 311px;
+        right: 175px;
+        bottom: 40px;
+        max-height: 65vh;
+    }
+}
+
 /* ======================================================
    MOBILE FOUNDATION
 ====================================================== */
@@ -1263,6 +1284,9 @@ LAPTOP LEGEND (1280x720, 1366x768, etc.)
         -webkit-backdrop-filter: blur(18px);
         gap: 14px;
         z-index: 15;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        will-change: transform;
     }
 
     #mobile-branding img {
