@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (map.getSource(floodSource)) map.removeSource(floodSource);
 
     const fileName = province.toLowerCase().trim();
-    const BASE_TILE_URL = "https://drsouqrmvrxlbxpkvgnf.supabase.co/storage/v1/object/public/floodTiles/tiles/";
+    const BASE_TILE_URL = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 
     map.addSource(floodSource, {
